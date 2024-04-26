@@ -18,10 +18,14 @@ https://github.com/MooersLab/cctbx-voice-in/assets/15176203/47c66f83-290d-4636-a
 
 ## Installation
 - Install cctbx in a conda env
-- Make a Jupyter kernel for the cctbx conda env
-- Select all of the contents of cctbx.csv
-- Paste these into the `bulk add` window of your Invoice In Plus account
+- Make a Jupyter kernel for the cctbx conda env.
+- Select all of the contents of cctbx.csv.
+- Paste these into the `bulk add` window of your Invoice In Plus account. 
 
+## Usage
+
+To insert the code snippet to make the anomalous pairs plot in the above video, say 'insert anomalous pair plot'.
+Edit the file names immediately below the comment lines to marked with `# >>>` to customize to your data file.
 
 ## Related repos for voice-triggered snippets in Markdown cells in Jupyter and Colab
 
@@ -31,10 +35,6 @@ https://github.com/MooersLab/cctbx-voice-in/assets/15176203/47c66f83-290d-4636-a
 Coming soon.
 
 ## Related repos for Jupyter and Colab
-
-## Installation
- - Select all contents in cctbx.csv
- - Copy and paste into `bulk add window` of your Voice In Plus account
 
 
 
