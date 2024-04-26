@@ -1,3 +1,5 @@
+create cctbx conda environment,conda create -n cctbx312 -c conda-forge cctbx-base python=3.12
+create cctbx conda kernel,conda activate cctbx312 && python -m ipykernel install --user --name cctbx312 --display-name 'cctbx 3.12'
 insert anomalous pair plot,"%matplotlib inline
 import matplotlib.pyplot as plt
 import matplotlib as mpl
