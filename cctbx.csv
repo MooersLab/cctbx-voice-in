@@ -1,5 +1,8 @@
 create cctbx conda environment,conda create -n cctbx312 -c conda-forge cctbx-base python=3.12
 create cctbx conda kernel,conda activate cctbx312 && python -m ipykernel install --user --name cctbx312 --display-name 'cctbx 3.12'
+read mtz file into a miller array,"<case:lower> from iotbx.reflection_file_reader import any_reflection_file
+hkl_file = any_reflection_file('${1:3hz7.mtz}')
+miller_arrays = hkl_file.as_miller_arrays(merge_equivalents=False)"
 print labels of miller array,"<case:lower> [print('Miller Array %s: %s' % (i, miller_array.info().labels)) for i, miller_array in list(enumerate(miller_arrays))[:2]]"
 print wavelength of each miller array,"<case:lower> [print('Miller Array %s: %s' % (i, miller_array.info().wavelength)) for i, miller_array in list(enumerate(miller_arrays))]"
 print source of each miller array,"<case:lower> print('Miller Array %s: %s' % (i, miller_array.info().source)) for i, miller_array in list(enumerate(miller_arrays))]"
