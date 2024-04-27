@@ -8,19 +8,29 @@ print wavelength of each miller array,"<case:lower> [print('Miller Array %s: %s'
 print source of each miller array,"<case:lower> print('Miller Array %s: %s' % (i, miller_array.info().source)) for i, miller_array in list(enumerate(miller_arrays))]"
 print number of datasets in miller array,"<case:lower> len(miller_arrays)"
 print symmetry of each miller array,"<case:lower> [print('Miller Array %s: %s' % (i, miller_array.info().crystal_symmetry_from_file)) for i, miller_array in list(enumerate(miller_arrays))]"
-print miller indices for a given miller array.,"<case:lower> [print(hkl) for hkl in miller_arrays[${1:0}].indices()]"
+print miller indices for a given miller array,"<case:lower> [print(hkl) for hkl in miller_arrays[${1:0}].indices()]"
 print the available methods for the Miller class.,"<case:lower> dir(miller_arrays[${1:0}])"
 print  the resolution range in d star in a specified Miller array,"<case:lower> miller_arrays[${1:0}].min_max_d_star_sq()"
 print  the resolution range in Angstroms for a Miller array,"<case:lower> miller_arrays[${1:0}].d_max_min()"
-print  the I/sig overall for a given Miller array.,"<case:lower> miller_arrays[${1:0}].i_over_sig_i()"
-print  CC one-half sigma tau for a given Miller array.,"<case:lower> miller_arrays[${1:0}].cc_one_half_sigma_tau()"
-print CC one-half for a given Miller array. ,"<case:lower> miller_arrays[${1:0}].cc_one_half()"
-print the Bijvoet ratios in a specified Miller array.  May have to average by bin first.,"<case:lower> [print(i) for i in miller_arrays[${1:0}].bijvoet_ratios()]"
-Return the `measurability` of the anomalous signal in a specified Miller array.,"<case:lower> miller_arrays[${1:0}].measurability()"
-Return the anomalous signal in a specified Miller array.,"<case:lower> miller_arrays[${1:0}].anomalous_signal()"
-Show comprehensive summary for a specified Miller array. ,"<case:lower> miller_arrays[${1:0}].show_comprehensive_summary()"
-Show number of bijvoet pairs for a specified Miller array.,"<case:lower> miller_arrays[${1:0}].n_bijvoet_pairs()"
-Show wilson ratio of miller array for a specified Miller array. ,"<case:lower> miller_arrays[${1:0}].wilson_ratio()"
+print  the I/sig overall for a given Miller array,"<case:lower> miller_arrays[${1:0}].i_over_sig_i()"
+print  CC one-half sigma tau for a given Miller array,"<case:lower> miller_arrays[${1:0}].cc_one_half_sigma_tau()"
+print CC one-half for a given Miller array,"<case:lower> miller_arrays[${1:0}].cc_one_half()"
+print the Bijvoet ratios in a specified Miller array,"<case:lower> [print(i) for i in miller_arrays[${1:0}].bijvoet_ratios()]"
+Return the `measurability` of the anomalous signal in a specified Miller array,"<case:lower> miller_arrays[${1:0}].measurability()"
+Return the anomalous signal in a specified Miller array,"<case:lower> miller_arrays[${1:0}].anomalous_signal()"
+Show comprehensive summary for a specified Miller array,"<case:lower> miller_arrays[${1:0}].show_comprehensive_summary()"
+Show number of bijvoet pairs for a specified Miller array,"<case:lower> miller_arrays[${1:0}].n_bijvoet_pairs()"
+Show wilson ratio of miller array for a specified Miller array,"<case:lower> miller_arrays[${1:0}].wilson_ratio()"
+Unpack into I(+) and I(-) for a specified Miller array,"<case:lower> Iobs = miller_arrays[${1:0}]
+i_plus, i_minus = Iobs.hemispheres_acentrics()
+ipd = i_plus.data()
+ip=list(ipd)
+imd = i_minus.data()
+im = list(imd)
+len(im)
+Iobs.show_summary()
+print(Iobs.info())
+print(Iobs.observation_type())"
 insert anomalous pair plot,"%matplotlib inline
 import matplotlib.pyplot as plt
 import matplotlib as mpl
