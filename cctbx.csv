@@ -21,7 +21,7 @@ Return the anomalous signal in a specified Miller array,"<case:lower> miller_arr
 Show comprehensive summary for a specified Miller array,"<case:lower> miller_arrays[${1:0}].show_comprehensive_summary()"
 Show number of bijvoet pairs for a specified Miller array,"<case:lower> miller_arrays[${1:0}].n_bijvoet_pairs()"
 Show wilson ratio of miller array for a specified Miller array,"<case:lower> miller_arrays[${1:0}].wilson_ratio()"
-Unpack into I(+) and I(-) for a specified Miller array,"<case:lower> Iobs = miller_arrays[${1:0}]
+Unpack anomalous pairs for a specified Miller array,"<case:lower> Iobs = miller_arrays[${1:0}]
 i_plus, i_minus = Iobs.hemispheres_acentrics()
 ipd = i_plus.data()
 ip=list(ipd)
