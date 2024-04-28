@@ -73,3 +73,35 @@ ax.grid(False)
 
 # >>> change name of the figure file
 plt.savefig('3hz7IpIm.pdf',bbox_inches='tight')"
+Print five rows of Iobs,"list(Iobs[${1:100:105}])"
+extract the intensities for a Miller array and print ten rows,"Iobs = miller_arrays[${1:0}]
+iobsdata = Iobs.data()
+list(iobsdata[${1:100:110}])"
+Print all of the intensities for a given Miller array,"<case:lower> [print(hkl) for hkl in miller_arrays[1].data()]"
+write miller array as a mtz file.,"# Convert the miller array into a mtz_dataset and write out as a mtz file.
+mtz_dataset = Iobs.as_mtz_dataset(column_root_label='${1:I}')
+mtz_dataset.mtz_object().write('${2:3hz7intensities}.mtz')"
+read mtz file and print column labels,"<case:lower> mtz_filename2 = '${1:3hz7intensities}.mtz'
+mtz_file2 = mtz.object(mtz_filename2)
+mtz_file2.column_labels()"
+convert arrays to dictionaries,"<case:lower> from iotbx import mtz
+mtz_obj = mtz.object(file_name='${1:3nd4}.mtz')
+# Only works with mtz.object. 
+# Does not work if mtz is read in with iotbx.file_reader.
+miller_arrays_dict = mtz_obj.as_miller_arrays_dict()"
+Print the keys() of a miller dictionary.,"miller_arrays_dict.keys()"
+Print the column labels of Miller dictionary.,"<case:lower> from iotbx import mtz
+mtz_obj = mtz.object(file_name='${1:/Users/blaine/3nd4.mtz}')
+# Only works with mtz.object. Does not work if mtz is read in with iotbx.file_reader.
+miller_arrays_dict = mtz_obj.as_miller_arrays_dict()
+[print(f'Column label: {key[2]}')  for key in miller_arrays_dict.keys()]"
+generate the indices of given unit cell ,"from cctbx import miller
+import cctbx
+from cctbx import crystal
+ms = miller.build_set(
+    crystal_symmetry=crystal.symmetry(
+        space_group_symbol='${1:Fd-3m}',
+        unit_cell=(${2:5.4307,5.4307,5.4307,90.00,90.0,90.00})),
+    anomalous_flag=${3:True},
+    d_min=${4:0.4})
+[print(hkl) for hkl in ms.indices()]"
