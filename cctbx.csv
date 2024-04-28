@@ -105,3 +105,33 @@ ms = miller.build_set(
     anomalous_flag=${3:True},
     d_min=${4:0.4})
 [print(hkl) for hkl in ms.indices()]"
+generate reflections,"<case:lower> from cctbx import miller
+import cctbx
+from cctbx import crystal
+
+ms = miller.build_set(
+    crystal_symmetry=crystal.symmetry(
+        space_group_symbol='${1:Fd-3m}',
+        unit_cell=(${2:5.4307,5.4307,5.4307,90.00,90.0,90.00})),
+    anomalous_flag=${3:True},
+    d_min=${4:0.4})
+
+msu = ms.map_to_asu()
+[print(hkl2) for hkl2 in msu.indices()]"
+print summary of mtz file after reading into miller array,"<case:lower> from iotbx.reflection_file_reader import any_reflection_file
+hkl_in = any_reflection_file(file_name='${1:3nd4}.mtz')
+miller_arrays = hkl_in.as_miller_arrays()
+f_obs = miller_arrays[0]
+f_obs.show_summary()"
+print summary of mtz file after reading a mtz object,"<case:lower> from iotbx import mtz
+mtz_obj = mtz.object(file_name='/Users/blaine/${1:3nd4}.mtz')
+mtz_obj.show_summary()"
+Read mtz file into a Miller array.,"<case:lower> from iotbx import mtz
+mtz_obj = mtz.object(file_name='${1:3nd4}.mtz')
+miller_arrays = mtz_obj.as_miller_arrays()"
+read mtz file into a Miller array, truncate, and print summary.,"<case:lower> from iotbx import mtz
+mtz_obj = mtz.object(file_name='3nd4.mtz')
+miller_arrays = mtz_obj.as_miller_arrays()
+miller_array_truncated = miller_arrays[0].resolution_filter(d_min=2, d_max=5)
+print(miller_array_truncated)
+miller_array_truncated.show_summary()"
